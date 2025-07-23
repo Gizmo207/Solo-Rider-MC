@@ -8,12 +8,55 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 })
 
 // Printful product mapping - map your Firebase product IDs to Printful variant IDs
-const PRINTFUL_VARIANTS: { [key: string]: number } = {
-  // Example mappings - you'll need to get actual variant IDs from Printful
-  'lone-wolf-patch': 12345, // Replace with real Printful variant ID
-  'solo-tee': 67890,        // Replace with real Printful variant ID
-  'road-warrior-bundle': 11111, // Replace with real Printful variant ID
-}
+export const PRINTFUL_VARIANTS: Record<string, string> = {
+  /* ---------- ATHLETIC HEATHER ---------- */
+  "solo-rider-tee_S_Athletic Heather":  "687fbb2aaeb7d5",
+  "solo-rider-tee_M_Athletic Heather":  "687fbb2aaeb822",
+  "solo-rider-tee_L_Athletic Heather":  "687fbb2aaeb861",
+  "solo-rider-tee_XL_Athletic Heather": "687fbb2aaeb8b6",
+  "solo-rider-tee_2XL_Athletic Heather":"687fbb2aaeb8f3",
+  "solo-rider-tee_3XL_Athletic Heather":"687fbb2aaeb941",
+
+  /* --------------- BLACK --------------- */
+  "solo-rider-tee_S_Black":  "687fbb2aaeb0a9",
+  "solo-rider-tee_M_Black":  "687fbb2aaeb111",
+  "solo-rider-tee_L_Black":  "687fbb2aaeb177",
+  "solo-rider-tee_XL_Black": "687fbb2aaeb1c9",
+  "solo-rider-tee_2XL_Black":"687fbb2aaeb211",
+  "solo-rider-tee_3XL_Black":"687fbb2aaeb251",
+
+  /* ---------------- NAVY ---------------- */
+  "solo-rider-tee_S_Navy":  "687fbb2aaeb2a9",
+  "solo-rider-tee_M_Navy":  "687fbb2aaeb2f2",   // out‑of‑stock but mapped
+  "solo-rider-tee_L_Navy":  "687fbb2aaeb343",
+  "solo-rider-tee_XL_Navy": "687fbb2aaeb393",
+  "solo-rider-tee_2XL_Navy":"687fbb2aaeb3d9",
+  "solo-rider-tee_3XL_Navy":"687fbb2aaeb424",
+
+  /* ---------------- RED ----------------- */
+  "solo-rider-tee_S_Red":  "687fbb2aaeb478",
+  "solo-rider-tee_M_Red":  "687fbb2aaeb4b1",
+  "solo-rider-tee_L_Red":  "687fbb2aaeb508",
+  "solo-rider-tee_XL_Red": "687fbb2aaeb542",
+  "solo-rider-tee_2XL_Red":"687fbb2aaeb595",
+  "solo-rider-tee_3XL_Red":"687fbb2aaeb5d3",
+
+  /* ------------ TRUE ROYAL ------------- */
+  "solo-rider-tee_S_True Royal":  "687fbb2aaeb625",
+  "solo-rider-tee_M_True Royal":  "687fbb2aaeb665",
+  "solo-rider-tee_L_True Royal":  "687fbb2aaeb6b3",
+  "solo-rider-tee_XL_True Royal": "687fbb2aaeb6f3",
+  "solo-rider-tee_2XL_True Royal":"687fbb2aaeb745",
+  "solo-rider-tee_3XL_True Royal":"687fbb2aaeb797",
+
+  /* --------------- WHITE --------------- */
+  "solo-rider-tee_S_White":  "687fbb2aaeb999",
+  "solo-rider-tee_M_White":  "687fbb2aaeb9d4",
+  "solo-rider-tee_L_White":  "687fbb2aaebaa3",
+  "solo-rider-tee_XL_White": "687fbb2aaebaf3",
+  "solo-rider-tee_2XL_White":"687fbb2aaebb37",
+  "solo-rider-tee_3XL_White":"687fbb2aaebb83",
+};
 
 async function createPrintfulOrder(session: Stripe.Checkout.Session) {
   try {
@@ -68,7 +111,7 @@ async function createPrintfulOrder(session: Stripe.Checkout.Session) {
       body: JSON.stringify(orderData),
     })
 
-    const result = await response.json()
+    const result = await response.json() as { result: { id: string } }
     
     if (response.ok) {
       console.log('✅ Printful order created:', result.result.id)

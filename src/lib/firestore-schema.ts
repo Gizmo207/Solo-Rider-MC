@@ -21,7 +21,9 @@ export interface Product {
   price: number;
   description: string;
   sizes: string[];
-  imageUrl: string;
+  // New: color to image URL mapping for Printful variants
+  imagesByColor?: { [color: string]: string };
+  imageUrl: string; // fallback/default image
   category: 'patches' | 'tees' | 'bundles' | 'accessories';
   active: boolean;
   inventory: number;

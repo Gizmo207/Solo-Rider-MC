@@ -8,16 +8,16 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export async function POST(req: NextRequest) {
   try {
-    const { productId, quantity = 1 } = await req.json()
+    const { productId, quantity = 1, size, color } = await req.json();
 
     if (!productId) {
-      return NextResponse.json({ error: 'Product ID is required' }, { status: 400 })
+      return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });
     }
 
     // Get product details from Firestore
-    const product = await getProduct(productId)
+    const product = await getProduct(productId);
     if (!product) {
-      return NextResponse.json({ error: 'Product not found' }, { status: 404 })
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }
 
     // Create Stripe checkout session
@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
         {
           price_data: {
             currency: 'usd',
+            unit_amount: Math.round(product.price * 100), // Convert to cents
             product_data: {
               name: product.title,
               description: product.description,
@@ -35,9 +36,10 @@ export async function POST(req: NextRequest) {
               metadata: {
                 firestore_id: productId,
                 category: product.category,
+                size: size || '',
+                color: color || '',
               },
             },
-            unit_amount: Math.round(product.price * 100), // Convert to cents
           },
           quantity,
         },
@@ -51,15 +53,17 @@ export async function POST(req: NextRequest) {
       metadata: {
         product_id: productId,
         quantity: quantity.toString(),
+        size: size || '',
+        color: color || '',
       },
-    })
+    });
 
-    return NextResponse.json({ sessionId: session.id, url: session.url })
+    return NextResponse.json({ sessionId: session.id, url: session.url });
   } catch (error) {
-    console.error('Stripe checkout error:', error)
+    console.error('Stripe checkout error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
-    )
+    );
   }
 }
