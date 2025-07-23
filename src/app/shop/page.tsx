@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { getProducts, Product } from '../../lib/firestore-schema'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
-import Button from "../../../components/Button"
+import Button from "../../components/components/Button"
 import { ShoppingCart, Star, Zap, Filter, Search } from "lucide-react"
 
 const container = {
@@ -125,7 +125,8 @@ function ShopPage() {
           {filteredProducts.map((product) => {
             const colorOptions = product.imagesByColor ? Object.keys(product.imagesByColor) : ['Black','Athletic Heather','Navy','Red','True Royal','White'];
             const selectedColor = selectedColors[product.id!] || colorOptions[0];
-            const imageUrl = product.imagesByColor?.[selectedColor] || product.imageUrl;
+            const colorImages = product.imagesByColor?.[selectedColor];
+            const imageUrl = Array.isArray(colorImages) ? colorImages[0] : colorImages || product.imageUrl;
             return (
               <>
                 <motion.div
@@ -228,7 +229,12 @@ function ShopPage() {
             <div className="bg-gray-900 rounded-2xl p-8 max-w-lg w-full relative" onClick={e => e.stopPropagation()}>
               <button className="absolute top-2 right-2 text-white text-2xl" onClick={() => setModal({ open: false })}>&times;</button>
               <img
-                src={modal.product.imagesByColor?.[modal.color!] || modal.product.imageUrl}
+                src={(() => {
+                  const colorImages = modal.product.imagesByColor?.[modal.color!];
+                  if (Array.isArray(colorImages)) return colorImages[0];
+                  if (typeof colorImages === 'string') return colorImages;
+                  return modal.product.imageUrl;
+                })()}
                 alt={modal.product.title}
                 className="w-full h-auto rounded mb-4"
               />

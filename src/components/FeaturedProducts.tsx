@@ -1,7 +1,11 @@
-"use client";
+// FeaturedProducts.tsx - Highlights top club merch from Printful
+// This component fetches and displays featured products dynamically.
+// Intended for use in the main scroll journey.
+
+import React from 'react'
 import Link from 'next/link'
 import { motion } from "framer-motion"
-import Button from "../../components/Button"
+import Button from "./components/Button"
 import { ShoppingCart, Star, Zap } from "lucide-react"
 
 const featuredProducts = [
@@ -55,7 +59,12 @@ const item = {
   show: { opacity: 1, y: 0 }
 }
 
+/**
+ * FeaturedProducts - Displays a grid of top-selling or new club merchandise.
+ * Can be wired to Printful API for live product feed.
+ */
 export default function FeaturedProducts() {
+  // TODO: Connect to Printful API for live merch
   return (
     <section className="bg-gradient-to-b from-solo-black to-gray-900 py-16 lg:py-24 relative overflow-hidden">
       {/* Background pattern */}

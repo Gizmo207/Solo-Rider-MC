@@ -5,6 +5,7 @@
 "use client";
 import { motion } from "framer-motion";
 import styles from "./Hero.module.css";
+import BikeScene from "./BikeScene";
 
 /**
  * Hero component for the landing section.
@@ -13,16 +14,9 @@ import styles from "./Hero.module.css";
 export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black text-white">
-      {/* 🎥 Background video loop */}
-      <video
-        className={styles.heroVideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-        src="/bg.mp4"
-      />
-      {/* 🧱 Content Layer (logo, title, CTA) */}
+      {/* 3D Spline Bike Scene Placeholder */}
+      <BikeScene />
+      {/* UI Layer */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
         {/* 🛡️ Club Logo */}
         <img

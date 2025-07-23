@@ -1,6 +1,6 @@
 // Update the import paths if the components are located elsewhere, for example:
-import Navigation from '../../../components/Navigation'
-import Footer from '../../../components/Footer'
+import Navigation from '../../components/Navigation'
+import Footer from '../../components/Footer'
 
 // If the path is incorrect, try one of these alternatives:
 // import Navigation from '@/components/Navigation'

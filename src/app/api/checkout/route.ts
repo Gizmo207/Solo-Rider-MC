@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { getProduct } from '../../../lib/firestore-schema'
+import { getProductById } from '../../../lib/firestore-schema'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-06-30.basil',
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Get product details from Firestore
-    const product = await getProduct(productId);
+    const product = await getProductById(productId);
     if (!product) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }

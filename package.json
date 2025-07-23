@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write .",
+    "clean": "bash cleanup.sh"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

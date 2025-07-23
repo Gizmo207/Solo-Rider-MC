@@ -4,6 +4,7 @@
 > Built for the brotherhood. Forged on the throttle.
 
 ## 🌐 Live Site
+
 [Coming Soon] — Awwwards-grade experience powered by Next.js, GSAP, and Spline.
 
 ---
@@ -45,12 +46,14 @@ npm run dev
 ```
 
 Lint & Format
+
 ```bash
 npm run lint
 npm run format
 ```
 
 ## 🧠 Tech Stack
+
 - Next.js 14 (App Router)
 - TailwindCSS + Prettier + ESLint
 - Framer Motion + GSAP ScrollTrigger
@@ -59,16 +62,20 @@ npm run format
 - Printful API integration
 
 ## 📦 API Keys (.env)
-```
+
+```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_key
 NEXT_PUBLIC_PRINTFUL_API_KEY=your_printful_key
 ```
+
 Never expose secrets in the frontend or repo.
 
 ## 🧾 License
+
 MIT — you can ride with it, modify it, and build your own journey.
 
 ## 🔥 Awwwards-Level Goals
+
 - Smooth scroll-cut scene transitions
 - Hover-to-explode Harley parts
 - Responsive mobile-first experience
@@ -78,7 +85,7 @@ MIT — you can ride with it, modify it, and build your own journey.
 
 ---
 
-# 🧹 Optional Cleanup Script
+## 🧹 Optional Cleanup Script
 
 If you want a one-liner to nuke local clutter (builds, temp, DS_Store, etc):
 
@@ -86,7 +93,9 @@ If you want a one-liner to nuke local clutter (builds, temp, DS_Store, etc):
 # cleanup.sh
 rm -rf .next .DS_Store *.log temp/ node_modules/.cache
 ```
+
 Add to package.json:
+
 ```json
 "scripts": {
   "clean": "bash cleanup.sh"
@@ -94,6 +103,7 @@ Add to package.json:
 ```
 
 ✅ You’re Now Fully Cleaned and Ready for:
+
 - Adding Spline embeds section-by-section
 - Connecting GSAP transitions
 - Finishing merch pages with Printful API

@@ -11,7 +11,7 @@ import Footer from '../../components/Footer'
 // Example: If Button is in components/ui/Button.tsx, use the following import:
 // Update the import path below to match the actual location of your Button component.
 // Example: If Button is in '../../components/Button', use:
-import Button from "../../../components/Button"
+import Button from "../../components/components/Button"
 // If you do not have a Button component, create one at '../../components/Button.tsx'.
 // If you do not have a Button component, create one at the specified path.
 // If your Button component is in a different location, update the path accordingly.
