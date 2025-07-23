@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,14 +6,15 @@
 html, body {
   margin: 0;
   height: 100%;
-  overflow: hidden;
 }
+
 
 main {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
 }
+
 
 section {
   scroll-snap-align: start;

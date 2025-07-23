@@ -14,19 +14,30 @@ import BikeScene from "./BikeScene";
 export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black text-white">
-      {/* 3D Spline Bike Scene Placeholder */}
-      <BikeScene />
+      {/* Cinematic video background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/bg.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      {/* 3D Spline Bike Scene Placeholder (can be layered above video if needed) */}
+      <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
+        <BikeScene />
+      </div>
       {/* UI Layer */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
         {/* 🛡️ Club Logo */}
         <img
           src="/logo.svg"
           alt="Solo Riders MC"
-          className="w-32 md:w-48 mb-6 animate-pulse"
+          className="w-32 md:w-48 mb-6 animate-pulse drop-shadow-xl"
         />
         {/* 💥 Tagline with entrance animation */}
         <motion.h1
-          className="text-4xl md:text-6xl font-bold tracking-wide"
+          {...{ className: "text-5xl md:text-7xl font-stencil font-extrabold tracking-wide drop-shadow-2xl mb-6" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -34,23 +45,29 @@ export default function Hero() {
           FORGED ON THE THROTTLE
         </motion.h1>
         {/* 🚀 CTA button with hover interaction */}
-        <motion.button
-          className="mt-6 px-6 py-3 bg-white text-black font-semibold rounded hover:bg-red-600 transition"
-          whileHover={{ scale: 1.05 }}
-          onClick={() => {
-            // Smooth scroll to next section on click
-            if (typeof window !== "undefined") {
-              window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-            }
-          }}
+        <motion.div
+          whileHover={{ scale: 1.08 }}
+          {...{ className: "mt-8" }}
         >
-          SEE THE RIDE
-        </motion.button>
+          <button
+            className="px-8 py-4 bg-white text-black text-2xl font-stencil font-bold rounded-full hover:bg-solo-red hover:text-white transition shadow-lg"
+            onClick={() => {
+              // Smooth scroll to next section on click
+              if (typeof window !== "undefined") {
+                window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+              }
+            }}
+          >
+            SEE THE RIDE
+          </button>
+        </motion.div>
       </div>
       {/* ⬇ Scroll Indicator */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="animate-bounce text-white text-2xl">⬇</div>
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30">
+        <div className="animate-bounce text-white text-4xl drop-shadow-lg">⬇</div>
       </div>
+      {/* Overlay for cinematic effect */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/60 via-black/20 to-black/80 z-10 pointer-events-none" />
     </section>
   );
 }

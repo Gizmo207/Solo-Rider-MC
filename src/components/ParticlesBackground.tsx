@@ -1,11 +1,16 @@
 "use client";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
+import type { Engine } from "tsparticles-engine";
 
 export default function ParticlesBackground() {
-  const particlesInit = async (engine) => {
+interface ParticlesInitProps {
+    engine: Engine;
+}
+
+const particlesInit = async (engine: ParticlesInitProps["engine"]): Promise<void> => {
     await loadSlim(engine);
-  };
+};
 
   return (
     <Particles
