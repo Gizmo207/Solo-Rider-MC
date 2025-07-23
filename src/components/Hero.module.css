@@ -7,3 +7,7 @@
   object-position: center 70%;
   z-index: 0;
 }
+
+.hero-video-bright {
+  filter: brightness(1.25);
+}
