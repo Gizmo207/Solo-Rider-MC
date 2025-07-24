@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { handleSmoothScroll } from '../lib/utils/smoothScroll'
+import { handleSmoothScroll, scrollToSection } from '../lib/utils/smoothScroll'
 
 // Navigation.tsx - Top navigation bar for Solo Riders MC
 // This component provides links to main sections and external resources.
@@ -32,52 +32,48 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a 
-                href="#home" 
-                onClick={(e) => {
+              <button 
+                onClick={() => {
                   console.log('Home button clicked');
-                  handleSmoothScroll(e, 'home');
+                  scrollToSection('home');
                 }}
-                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer bg-transparent border-none"
               >
                 Home
-              </a>
-              <a 
-                href="#shop" 
-                onClick={(e) => {
+              </button>
+              <button 
+                onClick={() => {
                   console.log('Shop button clicked');
-                  handleSmoothScroll(e, 'shop');
+                  scrollToSection('shop');
                 }}
-                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer bg-transparent border-none"
               >
                 Shop
-              </a>
+              </button>
               <Link href="/spotlight" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">
                 Solo Spotlight
               </Link>
-              <a 
-                href="#blog" 
-                onClick={(e) => {
+              <button 
+                onClick={() => {
                   console.log('Blog button clicked');
-                  handleSmoothScroll(e, 'blog');
+                  scrollToSection('blog');
                 }}
-                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer bg-transparent border-none"
               >
                 Blog
-              </a>
+              </button>
               <Link href="/about" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">
                 About
               </Link>
-              <a 
-                href="#contact" 
-                onClick={(e) => {
+              <button 
+                onClick={() => {
                   console.log('Contact button clicked');
-                  handleSmoothScroll(e, 'contact');
+                  scrollToSection('contact');
                 }}
-                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer bg-transparent border-none"
               >
                 Contact
-              </a>
+              </button>
             </div>
           </div>
 
@@ -104,56 +100,52 @@ export default function Navigation() {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-solo-black border-t border-solo-steel/20">
-            <a 
-              href="#home" 
-              onClick={(e) => { 
+            <button 
+              onClick={() => { 
                 console.log('Mobile Home button clicked');
-                handleSmoothScroll(e, 'home'); 
+                scrollToSection('home'); 
                 setIsOpen(false); 
               }}
-              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
+              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer bg-transparent border-none w-full text-left"
             >
               Home
-            </a>
-            <a 
-              href="#shop" 
-              onClick={(e) => { 
+            </button>
+            <button 
+              onClick={() => { 
                 console.log('Mobile Shop button clicked');
-                handleSmoothScroll(e, 'shop'); 
+                scrollToSection('shop'); 
                 setIsOpen(false); 
               }}
-              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
+              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer bg-transparent border-none w-full text-left"
             >
               Shop
-            </a>
+            </button>
             <Link href="/spotlight" className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">
               Solo Spotlight
             </Link>
-            <a 
-              href="#blog" 
-              onClick={(e) => { 
+            <button 
+              onClick={() => { 
                 console.log('Mobile Blog button clicked');
-                handleSmoothScroll(e, 'blog'); 
+                scrollToSection('blog'); 
                 setIsOpen(false); 
               }}
-              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
+              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer bg-transparent border-none w-full text-left"
             >
               Blog
-            </a>
+            </button>
             <Link href="/about" className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">
               About
             </Link>
-            <a 
-              href="#contact" 
-              onClick={(e) => { 
+            <button 
+              onClick={() => { 
                 console.log('Mobile Contact button clicked');
-                handleSmoothScroll(e, 'contact'); 
+                scrollToSection('contact'); 
                 setIsOpen(false); 
               }}
-              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
+              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer bg-transparent border-none w-full text-left"
             >
               Contact
-            </a>
+            </button>
           </div>
         </div>
       )}
