@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { handleSmoothScroll } from '../lib/utils/smoothScroll'
 
 // Navigation.tsx - Top navigation bar for Solo Riders MC
 // This component provides links to main sections and external resources.
@@ -31,24 +32,40 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <Link href="/" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">
+              <a 
+                href="#home" 
+                onClick={(e) => handleSmoothScroll(e, 'home')}
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
+              >
                 Home
-              </Link>
-              <Link href="/shop" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">
+              </a>
+              <a 
+                href="#shop" 
+                onClick={(e) => handleSmoothScroll(e, 'shop')}
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
+              >
                 Shop
-              </Link>
+              </a>
               <Link href="/spotlight" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">
                 Solo Spotlight
               </Link>
-              <Link href="/blog" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">
+              <a 
+                href="#blog" 
+                onClick={(e) => handleSmoothScroll(e, 'blog')}
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
+              >
                 Blog
-              </Link>
+              </a>
               <Link href="/about" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">
                 About
               </Link>
-              <Link href="/contact" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">
+              <a 
+                href="#contact" 
+                onClick={(e) => handleSmoothScroll(e, 'contact')}
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
+              >
                 Contact
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -75,24 +92,40 @@ export default function Navigation() {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-solo-black border-t border-solo-steel/20">
-            <Link href="/" className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">
+            <a 
+              href="#home" 
+              onClick={(e) => { handleSmoothScroll(e, 'home'); setIsOpen(false); }}
+              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
+            >
               Home
-            </Link>
-            <Link href="/shop" className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">
+            </a>
+            <a 
+              href="#shop" 
+              onClick={(e) => { handleSmoothScroll(e, 'shop'); setIsOpen(false); }}
+              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
+            >
               Shop
-            </Link>
+            </a>
             <Link href="/spotlight" className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">
               Solo Spotlight
             </Link>
-            <Link href="/blog" className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">
+            <a 
+              href="#blog" 
+              onClick={(e) => { handleSmoothScroll(e, 'blog'); setIsOpen(false); }}
+              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
+            >
               Blog
-            </Link>
+            </a>
             <Link href="/about" className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">
               About
             </Link>
-            <Link href="/contact" className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">
+            <a 
+              href="#contact" 
+              onClick={(e) => { handleSmoothScroll(e, 'contact'); setIsOpen(false); }}
+              className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
+            >
               Contact
-            </Link>
+            </a>
           </div>
         </div>
       )}

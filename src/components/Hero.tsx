@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import styles from "./Hero.module.css";
 import BikeScene from "./BikeScene";
+import { handleSmoothScroll } from '../lib/utils/smoothScroll';
 
 // List your video filenames here
 const videoFiles = ["bg.mp4", "bg2.mp4", "bg3.mp4"];
@@ -162,6 +163,26 @@ function AnimatedHeroText() {
           transition={{ duration: 1.5, delay: 1 }}
         >
           <span className="w-64 md:w-96 lg:w-[32rem] h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-60 block" />
+        </motion.div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: showTitle ? 0 : 1, y: showTitle ? 30 : 0 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
+          <div className="mt-8">
+            <button
+              onClick={(e) => handleSmoothScroll(e as any, 'shop')}
+              className="bg-gradient-to-r from-solo-red to-red-600 hover:from-red-600 hover:to-solo-red 
+                         text-white font-stencil font-bold text-xl px-8 py-4 rounded-lg 
+                         shadow-lg hover:shadow-red-500/50 transition-all duration-300 
+                         border-2 border-red-500 hover:border-red-400 
+                         transform hover:scale-105 active:scale-95"
+            >
+              SHOP NOW
+            </button>
+          </div>
         </motion.div>
       </motion.div>
     </div>

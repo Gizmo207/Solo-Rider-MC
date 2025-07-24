@@ -21,16 +21,22 @@ export default function Home() {
       {/* Top navigation bar */}
       <Navigation />
       {/* Hero section: video, logo, CTA */}
-      <Hero />
-
-
+      <div id="home">
+        <Hero />
+      </div>
 
       {/* Featured products: Printful merch highlights */}
-      <FeaturedProducts />
+      <div id="shop">
+        <FeaturedProducts />
+      </div>
       {/* Blog teasers: latest club news */}
-      <BlogTeasers />
+      <div id="blog">
+        <BlogTeasers />
+      </div>
       {/* Footer: links, copyright, socials */}
-      <Footer />
+      <div id="contact">
+        <Footer />
+      </div>
     </main>
   )
 }
