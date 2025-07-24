@@ -34,14 +34,20 @@ export default function Navigation() {
             <div className="ml-10 flex items-baseline space-x-8">
               <a 
                 href="#home" 
-                onClick={(e) => handleSmoothScroll(e, 'home')}
+                onClick={(e) => {
+                  console.log('Home button clicked');
+                  handleSmoothScroll(e, 'home');
+                }}
                 className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
               >
                 Home
               </a>
               <a 
                 href="#shop" 
-                onClick={(e) => handleSmoothScroll(e, 'shop')}
+                onClick={(e) => {
+                  console.log('Shop button clicked');
+                  handleSmoothScroll(e, 'shop');
+                }}
                 className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
               >
                 Shop
@@ -51,7 +57,10 @@ export default function Navigation() {
               </Link>
               <a 
                 href="#blog" 
-                onClick={(e) => handleSmoothScroll(e, 'blog')}
+                onClick={(e) => {
+                  console.log('Blog button clicked');
+                  handleSmoothScroll(e, 'blog');
+                }}
                 className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
               >
                 Blog
@@ -61,7 +70,10 @@ export default function Navigation() {
               </Link>
               <a 
                 href="#contact" 
-                onClick={(e) => handleSmoothScroll(e, 'contact')}
+                onClick={(e) => {
+                  console.log('Contact button clicked');
+                  handleSmoothScroll(e, 'contact');
+                }}
                 className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium cursor-pointer"
               >
                 Contact
@@ -94,14 +106,22 @@ export default function Navigation() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-solo-black border-t border-solo-steel/20">
             <a 
               href="#home" 
-              onClick={(e) => { handleSmoothScroll(e, 'home'); setIsOpen(false); }}
+              onClick={(e) => { 
+                console.log('Mobile Home button clicked');
+                handleSmoothScroll(e, 'home'); 
+                setIsOpen(false); 
+              }}
               className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
             >
               Home
             </a>
             <a 
               href="#shop" 
-              onClick={(e) => { handleSmoothScroll(e, 'shop'); setIsOpen(false); }}
+              onClick={(e) => { 
+                console.log('Mobile Shop button clicked');
+                handleSmoothScroll(e, 'shop'); 
+                setIsOpen(false); 
+              }}
               className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
             >
               Shop
@@ -111,7 +131,11 @@ export default function Navigation() {
             </Link>
             <a 
               href="#blog" 
-              onClick={(e) => { handleSmoothScroll(e, 'blog'); setIsOpen(false); }}
+              onClick={(e) => { 
+                console.log('Mobile Blog button clicked');
+                handleSmoothScroll(e, 'blog'); 
+                setIsOpen(false); 
+              }}
               className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
             >
               Blog
@@ -121,7 +145,11 @@ export default function Navigation() {
             </Link>
             <a 
               href="#contact" 
-              onClick={(e) => { handleSmoothScroll(e, 'contact'); setIsOpen(false); }}
+              onClick={(e) => { 
+                console.log('Mobile Contact button clicked');
+                handleSmoothScroll(e, 'contact'); 
+                setIsOpen(false); 
+              }}
               className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium cursor-pointer"
             >
               Contact
