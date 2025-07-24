@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import styles from "./Hero.module.css";
 import BikeScene from "./BikeScene";
-import { handleSmoothScroll } from '../lib/utils/smoothScroll';
+import { scrollToSection } from '../lib/utils/smoothScroll';
 
 // List your video filenames here
 const videoFiles = ["bg.mp4", "bg2.mp4", "bg3.mp4"];
@@ -173,7 +173,10 @@ function AnimatedHeroText() {
         >
           <div className="mt-8">
             <button
-              onClick={(e) => handleSmoothScroll(e as any, 'shop')}
+              onClick={() => {
+                console.log('Hero SHOP NOW button clicked');
+                scrollToSection('shop');
+              }}
               className="bg-gradient-to-r from-solo-red to-red-600 hover:from-red-600 hover:to-solo-red 
                          text-white font-stencil font-bold text-xl px-8 py-4 rounded-lg 
                          shadow-lg hover:shadow-red-500/50 transition-all duration-300 
