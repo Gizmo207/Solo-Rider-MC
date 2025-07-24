@@ -17,13 +17,14 @@ import Footer from '../components/Footer' // Bottom footer
  */
 export default function Home() {
   return (
-    <main className="bg-solo-black">
-      {/* Top navigation bar */}
+    <>
+      {/* Top navigation bar - fixed positioning */}
       <Navigation />
-      {/* Hero section: video, logo, CTA */}
-      <div id="home">
-        <Hero />
-      </div>
+      <main className="bg-solo-black">
+        {/* Hero section: video, logo, CTA */}
+        <div id="home">
+          <Hero />
+        </div>
 
       {/* Featured products: Printful merch highlights */}
       <div id="shop">
@@ -38,5 +39,6 @@ export default function Home() {
         <Footer />
       </div>
     </main>
+    </>
   )
 }
